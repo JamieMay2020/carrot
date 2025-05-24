@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🥕 CARROT IN DISTRESS 🥕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background: linear-gradient(45deg, #ff4444, #cc0000, #990000);
+            background-size: 400% 400%;
+            animation: dramaticBackground 3s ease infinite;
+            color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        @keyframes dramaticBackground {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .alert-banner {
+            background: rgba(255, 255, 255, 0.1);
+            border: 3px dashed #ffff00;
+            padding: 15px;
+            margin-bottom: 30px;
+            animation: flash 1s infinite;
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+        }
+
+        @keyframes flash {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        h1 {
+            font-size: 3rem;
+            text-shadow: 3px 3px 0px #000;
+            margin-bottom: 20px;
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px) rotate(-1deg); }
+            75% { transform: translateX(5px) rotate(1deg); }
+        }
+
+        .carrot-container {
+            position: relative;
+            margin: 50px auto;
+            width: 300px;
+            height: 400px;
+        }
+
+        .carrot {
+            width: 200px;
+            height: 300px;
+            background: linear-gradient(to bottom, #ff8c00 0%, #ff4500 100%);
+            border-radius: 20px 20px 200px 200px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            animation: distressedWiggle 0.3s infinite;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        @keyframes distressedWiggle {
+            0%, 100% { transform: translate(-50%, -50%) rotate(-2deg); }
+            25% { transform: translate(-48%, -52%) rotate(1deg); }
+            50% { transform: translate(-52%, -48%) rotate(-1deg); }
+            75% { transform: translate(-50%, -52%) rotate(2deg); }
+        }
+
+        .carrot-leaves {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: leafTremble 0.2s infinite;
+        }
+
+        @keyframes leafTremble {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-52%) rotate(-3deg); }
+            75% { transform: translateX(-48%) rotate(3deg); }
+        }
+
+        .leaf {
+            width: 40px;
+            height: 80px;
+            background: #228b22;
+            border-radius: 20px 5px;
+            display: inline-block;
+            margin: 0 5px;
+            transform-origin: bottom;
+        }
+
+        .leaf:nth-child(1) { transform: rotate(-20deg); }
+        .leaf:nth-child(2) { transform: rotate(0deg); }
+        .leaf:nth-child(3) { transform: rotate(20deg); }
+
+        .carrot-face {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .eyes {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .eye {
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            position: relative;
+            animation: panicBlink 2s infinite;
+        }
+
+        @keyframes panicBlink {
+            0%, 90%, 100% { transform: scaleY(1); }
+            95% { transform: scaleY(0.1); }
+        }
+
+        .pupil {
+            width: 15px;
+            height: 15px;
+            background: black;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: eyeDart 1s infinite;
+        }
+
+        @keyframes eyeDart {
+            0%, 25% { transform: translate(-60%, -50%); }
+            26%, 50% { transform: translate(-40%, -50%); }
+            51%, 75% { transform: translate(-60%, -40%); }
+            76%, 100% { transform: translate(-40%, -60%); }
+        }
+
+        .mouth {
+            width: 40px;
+            height: 40px;
+            border: 4px solid white;
+            border-radius: 50%;
+            border-top: none;
+            margin: 0 auto;
+            animation: distressedCry 0.5s infinite;
+        }
+
+        @keyframes distressedCry {
+            0%, 100% { transform: scaleY(1); }
+            50% { transform: scaleY(1.3); }
+        }
+
+        .distress-message {
+            background: rgba(0,0,0,0.8);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 40px 0;
+            border: 2px solid #ffff00;
+            animation: messageFlicker 2s infinite;
+        }
+
+        @keyframes messageFlicker {
+            0%, 100% { box-shadow: 0 0 20px #ffff00; }
+            50% { box-shadow: 0 0 40px #ffff00, 0 0 60px #ffff00; }
+        }
+
+        .distress-message h2 {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #ffff00;
+        }
+
+        .distress-message p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .help-button {
+            background: linear-gradient(45deg, #00ff00, #32cd32);
+            color: black;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            animation: buttonPulse 1s infinite;
+            margin: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 5px 15px rgba(0,255,0,0.3);
+        }
+
+        @keyframes buttonPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .help-button:hover {
+            animation: buttonUrgent 0.1s infinite;
+            background: linear-gradient(45deg, #32cd32, #00ff00);
+        }
+
+        @keyframes buttonUrgent {
+            0%, 100% { transform: scale(1.1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .floating-tears {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .tear {
+            position: absolute;
+            width: 10px;
+            height: 15px;
+            background: rgba(135, 206, 250, 0.7);
+            border-radius: 50% 50% 50% 0;
+            animation: tearFall 3s infinite linear;
+        }
+
+        @keyframes tearFall {
+            0% {
+                transform: translateY(-100vh) rotate(45deg);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(100vh) rotate(45deg);
+                opacity: 0;
+            }
+        }
+
+        .emergency-strip {
+            background: repeating-linear-gradient(
+                45deg,
+                #ffff00,
+                #ffff00 20px,
+                #ff0000 20px,
+                #ff0000 40px
+            );
+            height: 10px;
+            width: 100%;
+            animation: stripMove 0.5s infinite linear;
+        }
+
+        @keyframes stripMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 40px 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="emergency-strip"></div>
+    
+    <div class="floating-tears" id="tears"></div>
+    
+    <div class="container">
+        <div class="alert-banner">
+            <h1>🚨 EMERGENCY CARROT ALERT 🚨</h1>
+        </div>
+
+        <div class="carrot-container">
+            <div class="carrot">
+                <div class="carrot-leaves">
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                    <div class="leaf"></div>
+                </div>
+                <div class="carrot-face">
+                    <div class="eyes">
+                        <div class="eye">
+                            <div class="pupil"></div>
+                        </div>
+                        <div class="eye">
+                            <div class="pupil"></div>
+                        </div>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="distress-message">
+            <h2>HELP! I'M IN SERIOUS VEGETABLE DISTRESS!</h2>
+            <p>My name is Cornelius Carrot, and I'm experiencing an unprecedented level of root vegetable anxiety! The other vegetables in the garden are plotting against me, and I think the rabbits have formed an alliance!</p>
+            <p>I've been sitting in this soil for MONTHS, and nobody has appreciated my vibrant orange complexion or my perfectly formed taproot structure. The pressure is getting to me!</p>
+            <p>Please, someone help me escape this garden of terror before it's too late! I have so much beta-carotene to give to the world!</p>
+        </div>
+
+        <button class="help-button" onclick="rescueCarrot()">RESCUE THE CARROT!</button>
+        <button class="help-button" onclick="encourageCarrot()">SEND ENCOURAGEMENT!</button>
+    </div>
+
+    <div class="emergency-strip"></div>
+
+    <script>
+        // Create floating tears
+        function createTear() {
+            const tear = document.createElement('div');
+            tear.className = 'tear';
+            tear.style.left = Math.random() * 100 + '%';
+            tear.style.animationDelay = Math.random() * 3 + 's';
+            document.getElementById('tears').appendChild(tear);
+            
+            setTimeout(() => {
+                tear.remove();
+            }, 3000);
+        }
+
+        // Create tears periodically
+        setInterval(createTear, 300);
+
+        // Button functions
+        function rescueCarrot() {
+            alert("🎉 RESCUE MISSION SUCCESSFUL! 🎉\n\nCornelius the Carrot has been safely relocated to a premium vegetable sanctuary where he'll be appreciated for his nutritional excellence and stunning orange aesthetic!");
+            document.body.style.background = 'linear-gradient(45deg, #32cd32, #90ee90)';
+            document.querySelector('h1').innerHTML = '🥕 CARROT RESCUED! 🎉';
+        }
+
+        function encourageCarrot() {
+            const encouragements = [
+                "You're the most vibrant vegetable in the garden! 🧡",
+                "Your beta-carotene levels are OFF THE CHARTS! 📈",
+                "Stay strong, Cornelius! Help is on the way! 💪",
+                "You're not just a carrot, you're THE carrot! ⭐",
+                "Your taproot game is absolutely incredible! 🌱"
+            ];
+            
+            const randomEncouragement = encouragements[Math.floor(Math.random() * encouragements.length)];
+            alert("💬 ENCOURAGEMENT SENT!\n\n" + randomEncouragement);
+        }
+
+        // Add some dramatic sound effects (visual cues)
+        setInterval(() => {
+            document.body.style.filter = 'contrast(1.2)';
+            setTimeout(() => {
+                document.body.style.filter = 'contrast(1)';
+            }, 100);
+        }, 2000);
+    </script>
+</body>
+</html>
